@@ -42,14 +42,11 @@ def get_pipeline_runs() -> list[dict]:
     if not db_path.exists():
         return []
     conn = duckdb.connect(str(db_path), read_only=True)
-    try:
-        result = conn.execute("SELECT * FROM pipeline_runs ORDER BY started_at DESC LIMIT 50")
-        columns = [desc[0] for desc in result.description]
-        return [dict(zip(columns, row)) for row in result.fetchall()]
-    except Exception:
-        return []
-    finally:
-        conn.close()
+    result = conn.execute("SELECT * FROM pipeline_runs ORDER BY started_at DESC LIMIT 50")
+    columns = [desc[0] for desc in result.description]
+    data = [dict(zip(columns, row)) for row in result.fetchall()]
+    conn.close()
+    return data
 
 
 def get_quality_results(limit: int = 200) -> list[dict]:
@@ -58,16 +55,13 @@ def get_quality_results(limit: int = 200) -> list[dict]:
     if not db_path.exists():
         return []
     conn = duckdb.connect(str(db_path), read_only=True)
-    try:
-        result = conn.execute(
-            "SELECT * FROM data_quality_results ORDER BY checked_at DESC LIMIT ?", [limit]
-        )
-        columns = [desc[0] for desc in result.description]
-        return [dict(zip(columns, row)) for row in result.fetchall()]
-    except Exception:
-        return []
-    finally:
-        conn.close()
+    result = conn.execute(
+        "SELECT * FROM data_quality_results ORDER BY checked_at DESC LIMIT ?", [limit]
+    )
+    columns = [desc[0] for desc in result.description]
+    data = [dict(zip(columns, row)) for row in result.fetchall()]
+    conn.close()
+    return data
 
 
 def get_task_metrics(run_id: str | None = None) -> list[dict]:
@@ -76,20 +70,17 @@ def get_task_metrics(run_id: str | None = None) -> list[dict]:
     if not db_path.exists():
         return []
     conn = duckdb.connect(str(db_path), read_only=True)
-    try:
-        if run_id:
-            result = conn.execute(
-                "SELECT * FROM pipeline_task_metrics WHERE pipeline_run_id = ? ORDER BY started_at",
-                [run_id],
-            )
-        else:
-            result = conn.execute("SELECT * FROM pipeline_task_metrics ORDER BY started_at DESC LIMIT 100")
-        columns = [desc[0] for desc in result.description]
-        return [dict(zip(columns, row)) for row in result.fetchall()]
-    except Exception:
-        return []
-    finally:
-        conn.close()
+    if run_id:
+        result = conn.execute(
+            "SELECT * FROM pipeline_task_metrics WHERE pipeline_run_id = ? ORDER BY started_at",
+            [run_id],
+        )
+    else:
+        result = conn.execute("SELECT * FROM pipeline_task_metrics ORDER BY started_at DESC LIMIT 100")
+    columns = [desc[0] for desc in result.description]
+    data = [dict(zip(columns, row)) for row in result.fetchall()]
+    conn.close()
+    return data
 
 
 def get_overview_metrics() -> dict:
