@@ -10,7 +10,7 @@ import polars as pl
 from src.monitoring.pipeline_logger import get_logger
 from src.monitoring.run_tracker import RunTracker
 from src.storage.storage_manager import StorageManager
-from src.utils.config import MachinaFlowConfig, get_project_root, load_config
+from src.utils.config import AssetPulseConfig, get_project_root, load_config
 from src.utils.exceptions import IngestionError
 
 logger = get_logger(__name__)
@@ -38,7 +38,7 @@ def detect_dataset_info(file_path: Path) -> tuple[str, str]:
 class CMAPSSIngestor:
     def __init__(
         self,
-        config: MachinaFlowConfig | None = None,
+        config: AssetPulseConfig | None = None,
         run_tracker: RunTracker | None = None,
         storage: StorageManager | None = None,
     ) -> None:

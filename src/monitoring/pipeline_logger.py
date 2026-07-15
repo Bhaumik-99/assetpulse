@@ -57,7 +57,7 @@ def get_logger(
 
     if log_dir:
         log_dir.mkdir(parents=True, exist_ok=True)
-        file_handler = logging.FileHandler(log_dir / f"machinaflow_{datetime.now(UTC).strftime('%Y%m%d')}.log")
+        file_handler = logging.FileHandler(log_dir / f"assetpulse_{datetime.now(UTC).strftime('%Y%m%d')}.log")
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
 

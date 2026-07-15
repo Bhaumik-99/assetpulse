@@ -1,4 +1,4 @@
-# ⚙️ MachinaFlow
+# ⚙️ AssetPulse
 
 **Industrial Sensor Lakehouse & Predictive Maintenance Data Pipeline**
 
@@ -10,7 +10,7 @@ A production-style end-to-end data engineering platform that ingests, validates,
 
 Industrial equipment continuously generates operational and sensor data — temperature, pressure, rotational speed, fuel flow, vibration proxies, and more. Raw sensor data is often unreliable: it contains missing readings, duplicate records, invalid values, sensor spikes, and stale datasets.
 
-Predictive maintenance and equipment health models depend on trusted, high-quality time-series datasets. MachinaFlow bridges the gap between raw sensor data and actionable analytics by implementing production-grade data engineering patterns.
+Predictive maintenance and equipment health models depend on trusted, high-quality time-series datasets. AssetPulse bridges the gap between raw sensor data and actionable analytics by implementing production-grade data engineering patterns.
 
 ## Architecture
 
@@ -43,7 +43,7 @@ Industrial predictive maintenance systems require trusted sensor datasets. Witho
 - Equipment failures are missed because data quality issues mask degradation signals
 - Teams cannot answer "which equipment should we inspect first?"
 
-MachinaFlow demonstrates how a production data platform solves these problems with idempotent ingestion, automated quality checks, and transparent health scoring.
+AssetPulse demonstrates how a production data platform solves these problems with idempotent ingestion, automated quality checks, and transparent health scoring.
 
 ## Dataset
 
@@ -185,7 +185,7 @@ remaining_useful_life = max_cycle_per_unit - current_cycle
 
 ## Pipeline Orchestration
 
-Airflow DAG: `machinaflow_sensor_lakehouse_pipeline`
+Airflow DAG: `assetpulse_sensor_lakehouse_pipeline`
 
 ```
 start → create_run → check_sources → ingest_bronze → validate_bronze →
@@ -232,8 +232,8 @@ pytest tests/ -v
 
 ```bash
 # Clone
-git clone https://github.com/yourusername/machinaflow.git
-cd machinaflow
+git clone https://github.com/yourusername/assetpulse.git
+cd assetpulse
 
 # Install
 pip install -r requirements.txt
@@ -263,7 +263,7 @@ Services: Airflow webserver (:8080), Airflow scheduler, PostgreSQL, Streamlit da
 ## Project Structure
 
 ```
-machinaflow/
+assetpulse/
 ├── airflow/dags/                 # Airflow DAG
 ├── benchmarks/                   # Pandas vs Polars benchmarks
 ├── config/                       # YAML configurations
@@ -272,7 +272,7 @@ machinaflow/
 │   └── sensor_ranges.yaml        # Sensor range thresholds
 ├── dashboard/                    # Streamlit app
 ├── data/                         # Bronze/Silver/Gold data layers
-├── dbt/machinaflow/models/       # dbt SQL models
+├── dbt/assetpulse/models/       # dbt SQL models
 │   ├── staging/                  # Silver → staging views
 │   ├── intermediate/             # Rolling metrics, degradation
 │   └── marts/                    # Dim/fact tables, summaries

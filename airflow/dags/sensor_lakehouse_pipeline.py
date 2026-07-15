@@ -23,7 +23,7 @@ from src.validation.quality_runner import QualityRunner
 logger = get_logger(__name__)
 
 DEFAULT_ARGS = {
-    "owner": "machinaflow",
+    "owner": "assetpulse",
     "depends_on_past": False,
     "email_on_failure": False,
     "email_on_retry": False,
@@ -56,7 +56,7 @@ def _get_components():
 def create_pipeline_run(**context):
     config, _, tracker, _ = _get_components()
     dataset_id = config.dataset.default_id
-    run_id = tracker.create_pipeline_run("machinaflow_sensor_lakehouse_pipeline", dataset_id)
+    run_id = tracker.create_pipeline_run("assetpulse_sensor_lakehouse_pipeline", dataset_id)
     tracker.start_task(run_id, "create_pipeline_run")
     tracker.complete_task(run_id, "create_pipeline_run", "SUCCESS")
     context["ti"].xcom_push(key="pipeline_run_id", value=run_id)
@@ -202,13 +202,13 @@ def update_pipeline_metrics(**context):
 
 
 with DAG(
-    dag_id="machinaflow_sensor_lakehouse_pipeline",
+    dag_id="assetpulse_sensor_lakehouse_pipeline",
     default_args=DEFAULT_ARGS,
     description="Industrial Sensor Lakehouse Pipeline: Bronze → Silver → Gold",
     schedule_interval="@daily",
     start_date=datetime(2024, 1, 1, tzinfo=timezone.utc),
     catchup=False,
-    tags=["machinaflow", "sensor", "lakehouse"],
+    tags=["assetpulse", "sensor", "lakehouse"],
     on_failure_callback=on_failure_callback,
 ) as dag:
 

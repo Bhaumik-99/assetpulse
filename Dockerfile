@@ -19,8 +19,8 @@ COPY pyproject.toml .
 
 RUN pip install -e .
 
-ENV MACHINAFLOW_ENV=production
-ENV MACHINAFLOW_CONFIG_PATH=config/development.yaml
+ENV ASSETPULSE_ENV=production
+ENV ASSETPULSE_CONFIG_PATH=config/development.yaml
 
 EXPOSE 8501
 

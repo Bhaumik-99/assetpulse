@@ -7,7 +7,7 @@ import polars as pl
 from src.monitoring.pipeline_logger import get_logger
 from src.monitoring.run_tracker import RunTracker
 from src.storage.storage_manager import StorageManager
-from src.utils.config import MachinaFlowConfig, get_project_root, load_config
+from src.utils.config import AssetPulseConfig, get_project_root, load_config
 from src.validation.completeness_checks import run_completeness_checks
 from src.validation.cycle_gap_checks import detect_cycle_gaps
 from src.validation.duplicate_checks import detect_duplicates
@@ -22,7 +22,7 @@ logger = get_logger(__name__)
 class QualityRunner:
     def __init__(
         self,
-        config: MachinaFlowConfig | None = None,
+        config: AssetPulseConfig | None = None,
         run_tracker: RunTracker | None = None,
     ) -> None:
         self._config = config or load_config()

@@ -60,7 +60,7 @@ class DatasetConfig(BaseModel):
 
 
 class DuckDBConfig(BaseModel):
-    database_path: str = "data/metadata/machinaflow.duckdb"
+    database_path: str = "data/metadata/assetpulse.duckdb"
 
 
 class SensorRangeEntry(BaseModel):
@@ -69,7 +69,7 @@ class SensorRangeEntry(BaseModel):
     description: str = ""
 
 
-class MachinaFlowConfig(BaseModel):
+class AssetPulseConfig(BaseModel):
     environment: str = "development"
     data_paths: DataPathsConfig
     dataset: DatasetConfig = DatasetConfig()
@@ -90,7 +90,7 @@ class MachinaFlowConfig(BaseModel):
         return v
 
 
-_config_cache: MachinaFlowConfig | None = None
+_config_cache: AssetPulseConfig | None = None
 _sensor_ranges_cache: dict[str, SensorRangeEntry] | None = None
 
 
@@ -106,13 +106,13 @@ def get_project_root() -> Path:
     return _find_project_root()
 
 
-def load_config(config_path: Path | None = None) -> MachinaFlowConfig:
+def load_config(config_path: Path | None = None) -> AssetPulseConfig:
     global _config_cache
     if _config_cache is not None:
         return _config_cache
 
     if config_path is None:
-        env_path = os.environ.get("MACHINAFLOW_CONFIG_PATH")
+        env_path = os.environ.get("ASSETPULSE_CONFIG_PATH")
         config_path = get_project_root() / env_path if env_path else get_project_root() / "config" / "development.yaml"
 
     if not config_path.exists():
@@ -121,7 +121,7 @@ def load_config(config_path: Path | None = None) -> MachinaFlowConfig:
     with open(config_path) as f:
         raw: dict[str, Any] = yaml.safe_load(f)
 
-    _config_cache = MachinaFlowConfig(**raw)
+    _config_cache = AssetPulseConfig(**raw)
     return _config_cache
 
 
@@ -143,7 +143,7 @@ def load_sensor_ranges(config_path: Path | None = None) -> dict[str, SensorRange
     return _sensor_ranges_cache
 
 
-def get_resolved_paths(config: MachinaFlowConfig | None = None) -> dict[str, Path]:
+def get_resolved_paths(config: AssetPulseConfig | None = None) -> dict[str, Path]:
     if config is None:
         config = load_config()
     return config.data_paths.resolve(get_project_root())

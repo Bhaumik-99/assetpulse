@@ -19,7 +19,7 @@ transform:
 	python -m src.transformations.bronze_to_silver
 
 dbt-run:
-	cd dbt/machinaflow && dbt run
+	cd dbt/assetpulse && dbt run
 
 features:
 	python -m src.transformations.feature_engineering

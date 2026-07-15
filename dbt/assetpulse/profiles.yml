@@ -1,7 +1,7 @@
-machinaflow:
+assetpulse:
   target: dev
   outputs:
     dev:
       type: duckdb
-      path: "../../data/metadata/machinaflow_dbt.duckdb"
+      path: "../../data/metadata/assetpulse_dbt.duckdb"
       threads: 4

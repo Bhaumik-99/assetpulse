@@ -7,7 +7,7 @@ import polars as pl
 
 from src.monitoring.pipeline_logger import get_logger
 from src.storage.storage_manager import StorageManager
-from src.utils.config import MachinaFlowConfig, get_project_root, load_config
+from src.utils.config import AssetPulseConfig, get_project_root, load_config
 from src.utils.exceptions import TransformationError
 
 logger = get_logger(__name__)
@@ -18,7 +18,7 @@ SENSOR_COLUMNS = [f"sensor_{i:02d}" for i in range(1, 22)]
 class HealthMetricsCalculator:
     def __init__(
         self,
-        config: MachinaFlowConfig | None = None,
+        config: AssetPulseConfig | None = None,
         storage: StorageManager | None = None,
     ) -> None:
         self._config = config or load_config()

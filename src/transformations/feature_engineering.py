@@ -7,7 +7,7 @@ import yaml
 
 from src.monitoring.pipeline_logger import get_logger
 from src.storage.storage_manager import StorageManager
-from src.utils.config import MachinaFlowConfig, get_project_root, load_config
+from src.utils.config import AssetPulseConfig, get_project_root, load_config
 from src.utils.exceptions import TransformationError
 
 logger = get_logger(__name__)
@@ -25,7 +25,7 @@ def load_feature_config(config_path: Path | None = None) -> dict:
 class FeatureEngineer:
     def __init__(
         self,
-        config: MachinaFlowConfig | None = None,
+        config: AssetPulseConfig | None = None,
         storage: StorageManager | None = None,
         feature_config: dict | None = None,
     ) -> None:

@@ -1,8 +1,8 @@
-name: 'machinaflow'
+name: 'assetpulse'
 version: '1.0.0'
 config-version: 2
 
-profile: 'machinaflow'
+profile: 'assetpulse'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -16,7 +16,7 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  machinaflow:
+  assetpulse:
     staging:
       +materialized: view
     intermediate:

@@ -71,4 +71,4 @@ health_score:
     medium: 75
 
 duckdb:
-  database_path: data/metadata/machinaflow.duckdb
+  database_path: data/metadata/assetpulse.duckdb

@@ -8,7 +8,7 @@ x-airflow-common: &airflow-common
     - AIRFLOW__CORE__EXECUTOR=LocalExecutor
     - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
     - AIRFLOW__CORE__FERNET_KEY=your-fernet-key-here
-    - MACHINAFLOW_CONFIG_PATH=config/development.yaml
+    - ASSETPULSE_CONFIG_PATH=config/development.yaml
     - PYTHONPATH=/app
   volumes:
     - ./data:/app/data
@@ -42,7 +42,7 @@ services:
       -c "
         pip install apache-airflow[postgres] &&
         airflow db init &&
-        airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@machinaflow.io
+        airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@assetpulse.io
       "
     restart: "no"
 
@@ -74,7 +74,7 @@ services:
       - ./data:/app/data
       - ./config:/app/config
     environment:
-      - MACHINAFLOW_CONFIG_PATH=config/development.yaml
+      - ASSETPULSE_CONFIG_PATH=config/development.yaml
       - PYTHONPATH=/app
 
 volumes:

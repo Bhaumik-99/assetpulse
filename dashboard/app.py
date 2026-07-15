@@ -23,7 +23,7 @@ from dashboard.queries import (
 )
 
 st.set_page_config(
-    page_title="MachinaFlow — Industrial Equipment Monitor",
+    page_title="AssetPulse — Industrial Equipment Monitor",
     page_icon="⚙️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -253,7 +253,7 @@ def render_pipeline_monitoring():
 
 
 def main():
-    st.sidebar.title("⚙️ MachinaFlow")
+    st.sidebar.title("⚙️ AssetPulse")
     st.sidebar.markdown("Industrial Equipment Monitor")
 
     page = st.sidebar.radio(

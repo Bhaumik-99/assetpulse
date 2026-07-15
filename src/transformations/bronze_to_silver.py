@@ -8,7 +8,7 @@ import polars as pl
 
 from src.monitoring.pipeline_logger import get_logger
 from src.storage.storage_manager import StorageManager
-from src.utils.config import MachinaFlowConfig, get_project_root, load_config, load_sensor_ranges
+from src.utils.config import AssetPulseConfig, get_project_root, load_config, load_sensor_ranges
 from src.validation.duplicate_checks import quarantine_duplicates
 
 logger = get_logger(__name__)
@@ -19,7 +19,7 @@ SENSOR_COLUMNS = [f"sensor_{i:02d}" for i in range(1, 22)]
 class BronzeToSilverTransformer:
     def __init__(
         self,
-        config: MachinaFlowConfig | None = None,
+        config: AssetPulseConfig | None = None,
         storage: StorageManager | None = None,
     ) -> None:
         self._config = config or load_config()

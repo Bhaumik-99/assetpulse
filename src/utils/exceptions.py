@@ -1,26 +1,26 @@
-class MachinaFlowError(Exception):
+class AssetPulseError(Exception):
     pass
 
 
-class IngestionError(MachinaFlowError):
+class IngestionError(AssetPulseError):
     pass
 
 
-class DataValidationError(MachinaFlowError):
+class DataValidationError(AssetPulseError):
     pass
 
 
-class TransformationError(MachinaFlowError):
+class TransformationError(AssetPulseError):
     pass
 
 
-class StorageError(MachinaFlowError):
+class StorageError(AssetPulseError):
     pass
 
 
-class ConfigurationError(MachinaFlowError):
+class ConfigurationError(AssetPulseError):
     pass
 
 
-class PipelineError(MachinaFlowError):
+class PipelineError(AssetPulseError):
     pass

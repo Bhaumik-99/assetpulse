@@ -2,7 +2,7 @@
 setlocal
 
 echo ========================================
-echo MachinaFlow Industrial Data Pipeline
+echo AssetPulse Industrial Data Pipeline
 echo ========================================
 
 echo.

@@ -27,9 +27,9 @@ airflow/airflow-webserver.pid
 airflow/logs/
 airflow/standalone_admin_password.txt
 
-dbt/machinaflow/target/
-dbt/machinaflow/dbt_packages/
-dbt/machinaflow/logs/
+dbt/assetpulse/target/
+dbt/assetpulse/dbt_packages/
+dbt/assetpulse/logs/
 
 .ruff_cache/
 .pytest_cache/
