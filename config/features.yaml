@@ -1,0 +1,75 @@
+features:
+  sensor_02:
+    rolling_windows: [5, 10, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_03:
+    rolling_windows: [5, 10, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_04:
+    rolling_windows: [5, 10, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_07:
+    rolling_windows: [5, 10, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_08:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_09:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_11:
+    rolling_windows: [5, 10, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_12:
+    rolling_windows: [5, 10, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_13:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_14:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: false
+
+  sensor_15:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_17:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: false
+
+  sensor_20:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  sensor_21:
+    rolling_windows: [5, 20]
+    statistics: [mean, std]
+    rate_of_change: true
+
+  operational_setting_1:
+    rolling_windows: [10]
+    statistics: [mean]
+    rate_of_change: false

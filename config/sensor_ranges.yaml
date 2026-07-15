@@ -1,0 +1,104 @@
+sensor_01:
+  min: -0.01
+  max: 0.01
+  description: "Fan inlet temperature (HPC outlet temperature deviation)"
+
+sensor_02:
+  min: 630
+  max: 650
+  description: "LPC outlet temperature"
+
+sensor_03:
+  min: 1560
+  max: 1620
+  description: "HPC outlet temperature"
+
+sensor_04:
+  min: 1380
+  max: 1420
+  description: "LPT outlet temperature"
+
+sensor_05:
+  min: 0
+  max: 25
+  description: "Fan inlet pressure deviation"
+
+sensor_06:
+  min: 0
+  max: 100
+  description: "Bypass-duct pressure"
+
+sensor_07:
+  min: 540
+  max: 560
+  description: "HPC outlet pressure"
+
+sensor_08:
+  min: 2370
+  max: 2400
+  description: "Physical fan speed"
+
+sensor_09:
+  min: 9000
+  max: 9150
+  description: "Physical core speed"
+
+sensor_10:
+  min: 1.2
+  max: 1.4
+  description: "Engine pressure ratio"
+
+sensor_11:
+  min: 45
+  max: 50
+  description: "HPC outlet static pressure"
+
+sensor_12:
+  min: 510
+  max: 530
+  description: "Ratio of fuel flow to Ps30"
+
+sensor_13:
+  min: 2380
+  max: 2400
+  description: "Corrected fan speed"
+
+sensor_14:
+  min: 8100
+  max: 8200
+  description: "Corrected core speed"
+
+sensor_15:
+  min: 8.0
+  max: 9.5
+  description: "Bypass ratio"
+
+sensor_16:
+  min: 0.01
+  max: 0.04
+  description: "Burner fuel-air ratio"
+
+sensor_17:
+  min: 380
+  max: 420
+  description: "Bleed enthalpy"
+
+sensor_18:
+  min: 2380
+  max: 2400
+  description: "Demanded fan speed"
+
+sensor_19:
+  min: 100
+  max: 100
+  description: "Demanded corrected fan speed"
+
+sensor_20:
+  min: 14.5
+  max: 15.5
+  description: "HPT coolant bleed"
+
+sensor_21:
+  min: 20
+  max: 24
+  description: "LPT coolant bleed"

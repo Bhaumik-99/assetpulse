@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: stg_sensor_readings
+    description: "Staging model for Silver sensor readings. Filters quarantined records."
+    columns:
+      - name: unit_id
+        description: "Equipment unit identifier"
+        tests:
+          - not_null
+      - name: cycle
+        description: "Operational cycle number"
+        tests:
+          - not_null
+      - name: dataset_id
+        description: "Dataset version identifier (FD001, FD002, etc.)"
+
+  - name: int_sensor_rolling_metrics
+    description: "Rolling statistical metrics for key sensors. Uses AVG, STDDEV, MIN, MAX window functions over 10 and 20 cycle windows."
+
+  - name: int_equipment_degradation
+    description: "Sensor rate of change and degradation trends. Uses LAG, LEAD, and rolling window averages."
+
+  - name: dim_equipment
+    description: "Equipment dimension table. Grain: one row per equipment unit per dataset."
+    columns:
+      - name: equipment_key
+        description: "Surrogate key combining unit_id and dataset_id"
+        tests:
+          - unique
+          - not_null
+      - name: unit_id
+        tests:
+          - not_null
+
+  - name: fact_sensor_readings
+    description: "Fact table for sensor readings. Grain: one row per equipment unit per operational cycle."
+    columns:
+      - name: equipment_key
+        tests:
+          - not_null
+      - name: unit_id
+        tests:
+          - not_null
+      - name: cycle
+        tests:
+          - not_null
+
+  - name: fact_equipment_health
+    description: "Equipment health metrics with risk ranking. Uses ROW_NUMBER for maintenance priority."
+
+  - name: equipment_health_summary
+    description: "Dataset-level quality and health summary. Aggregates PASS/WARN/FAIL counts with CTEs."

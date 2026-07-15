@@ -1,0 +1,74 @@
+environment: development
+
+data_paths:
+  base_dir: data
+  source_dir: data/source
+  bronze_dir: data/bronze
+  silver_dir: data/silver
+  gold_dir: data/gold
+  quarantine_dir: data/quarantine
+  metadata_dir: data/metadata
+  logs_dir: logs
+
+dataset:
+  default_id: FD001
+  supported_ids:
+    - FD001
+    - FD002
+    - FD003
+    - FD004
+  source_url: "https://data.nasa.gov/download/y27m-pnra/application%2Fzip"
+
+column_names:
+  - unit_id
+  - cycle
+  - operational_setting_1
+  - operational_setting_2
+  - operational_setting_3
+  - sensor_01
+  - sensor_02
+  - sensor_03
+  - sensor_04
+  - sensor_05
+  - sensor_06
+  - sensor_07
+  - sensor_08
+  - sensor_09
+  - sensor_10
+  - sensor_11
+  - sensor_12
+  - sensor_13
+  - sensor_14
+  - sensor_15
+  - sensor_16
+  - sensor_17
+  - sensor_18
+  - sensor_19
+  - sensor_20
+  - sensor_21
+
+freshness:
+  bronze_max_age_hours: 24
+  silver_max_age_hours: 24
+  gold_max_age_hours: 48
+
+pipeline:
+  retries: 2
+  retry_delay_seconds: 300
+  task_timeout_seconds: 1800
+  schedule_interval: "@daily"
+  spike_detection_window: 10
+  spike_threshold_sigma: 3.0
+
+health_score:
+  sensor_deviation_weight: 0.4
+  spike_penalty_weight: 0.2
+  degradation_penalty_weight: 0.3
+  quality_penalty_weight: 0.1
+  risk_thresholds:
+    critical: 25
+    high: 50
+    medium: 75
+
+duckdb:
+  database_path: data/metadata/machinaflow.duckdb
